@@ -1,0 +1,7 @@
+.user-row {
+  margin-top: .2rem;
+  border: 2px solid;
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+}

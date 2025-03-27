@@ -1,0 +1,4 @@
+.create-workspace-container, .title {
+  display: flex;
+  justify-content: center;
+}

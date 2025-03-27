@@ -1,0 +1,13 @@
+.workspace-container {
+  display: flex;
+  justify-content: center;
+}
+.workspace-box {
+  display: flex;
+  justify-content: space-between;
+  width: 80rem;
+}
+
+.notebook-list {
+  border: 1px solid;
+}

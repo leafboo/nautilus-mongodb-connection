@@ -1,0 +1,5 @@
+.user-home-container, .create-workspace-button {
+  display: flex;
+  justify-content: center;
+}
+

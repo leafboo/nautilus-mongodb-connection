@@ -1,24 +1,58 @@
-import { Link } from "react-router"
+import React from "react";
+import { z } from "zod"
+import { useNavigate } from "react-router";
+import NautilusApi from "../../api";
+
+const userSchema = z.object({
+  username: z.string(),
+  email: z.string(),
+  password: z.string(),
+  reEnterPassword: z.string()
+})
+
 
 export default function CreateUser() {
+  const navigate = useNavigate();
+  
+
+  
+  function formAction(formData: FormData) {
+    const formValues = Object.fromEntries(formData);
+
+    const result = userSchema.safeParse(formValues)
+    
+    if (result.success && result.data.password === result.data.reEnterPassword) {
+      NautilusApi.createUser(result.data.username, result.data.email, result.data.password);
+      navigate("/")
+
+    } else if (result.success && result.data.password !== result.data.reEnterPassword) {
+      alert("Passwords do not match")
+    }
+
+
+    console.log(result)
+  }
+
   return ( 
     <>
-      <form method="post">
+      <form action={formAction}>
         <label htmlFor="username">Username</label><br />
-        <input id="username" type="text" /><br />
+        <input id="username" name="username" type="text" /><br />
 
         <label htmlFor="email">Email</label><br />
-        <input id="email" type="text" /><br />
+        <input id="email" name="email" type="text" /><br />
 
         <label htmlFor="password">Password</label><br />
-        <input id="password" type="text" /><br />
+        <input id="password" name="password" type="password" /><br />
 
         <label htmlFor="reEnterPassword">Re-Enter Password</label><br />
-        <input id="reEnterPassword" type="text" /><br /><br />
+        <input id="reEnterPassword" name="reEnterPassword" type="password" /><br /><br />
 
-        <Link to="/">
-          <input type="submit" value="Create Account" />
-        </Link>
+       
+        <input type="submit" value="Create Account" />
+        
+          
+        
       </form>
     </>
   )

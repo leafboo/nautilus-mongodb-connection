@@ -1,10 +1,37 @@
+import React from "react"
 import HomeCSS from "./Home.module.css"
 import UserListRow from "../components/UserListRow"
 import { Link } from "react-router"
+import NautilusApi from "../../api/index"
 
-
+type UserType = {
+  _id: string;
+  username: string;
+  password: string;
+  email: string;
+  workspace_ids: string[];
+  __v: number
+}
 
 export default function Home() {
+  const [users, setUsers] = React.useState<UserType[]>([]);
+  let usersElement
+  if (users) {
+    users.forEach((user) => console.log(user.username))
+
+    usersElement = users.map(user => <UserListRow id={user._id} user={user.username} />) 
+
+  }
+
+  React.useEffect(() => {
+    getUsers()
+  }, [])
+
+  async function getUsers() {
+    const userData = await NautilusApi.fetchUsers();
+    setUsers(userData)
+  }
+
   return (
     <>
       <div className={HomeCSS['home-container']}>
@@ -19,10 +46,7 @@ export default function Home() {
           
 
           <div className={HomeCSS['user-list']}>
-            <UserListRow user={1} />
-            <UserListRow user={2} />
-            <UserListRow user={3} />
-            <UserListRow user={4} />
+            {usersElement}
           </div>
         </div>
       </div>

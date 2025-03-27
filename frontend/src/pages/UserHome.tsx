@@ -1,10 +1,36 @@
-import { Link } from "react-router"
+import React from "react";
+import { Link, useParams } from "react-router"
 import UserHomeCSS from "./UserHome.module.css"
 import WorkspaceListRow from "../components/WorkspaceListRow"
+import NautilusApi from "../../api";
+
+type UserType = {
+  _id: string;
+  username: string;
+  password: string;
+  email: string;
+  workspace_ids: string[];
+  __v: number
+}
 
 export default function UserHome() {
+  const { id } = useParams();
+  const [user, setUser] = React.useState<UserType>();
+
+  React.useEffect(() => {
+    getUser();
+  }, [])
+
+  async function getUser() {
+    if (id) {
+      const userData = await NautilusApi.fetchUser(id)
+      setUser(userData);
+    }
+  }
+  
   return (
     <>
+      <div>User: {user?.username}</div>
       <div className={UserHomeCSS['user-home-container']}>
         <div className={UserHomeCSS['user-home-box']}>
           <div className={UserHomeCSS['create-workspace-button']}>

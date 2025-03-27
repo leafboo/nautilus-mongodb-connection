@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose')
+const cors = require('cors')
 const User = require('./models/userModel.cjs')
 const ResearchWorkspace = require('./models/researchWorkspaceModel.cjs')
 const NewsWorkspace = require('./models/newsWorkspaceModel.cjs')
 
 const app = express();
+app.use(cors({ origin: "*" }))
+
 // Note: 
 // Nodemon is basically live server but for node
 // Model is required to be able to perform CRUD to the database

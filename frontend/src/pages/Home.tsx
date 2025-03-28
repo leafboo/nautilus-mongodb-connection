@@ -9,7 +9,7 @@ type UserType = {
   username: string;
   password: string;
   email: string;
-  workspace_ids: string[];
+  workspaceIds: string[];
   __v: number
 }
 

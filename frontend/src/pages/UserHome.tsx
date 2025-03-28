@@ -9,11 +9,11 @@ type UserType = {
   username: string;
   password: string;
   email: string;
-  workspace_ids: string[];
+  workspaces: [];
   __v: number
 }
 
-export default function UserHome() {
+export default function UserHome() {  
   const { id } = useParams();
   const [user, setUser] = React.useState<UserType>();
 
@@ -28,6 +28,12 @@ export default function UserHome() {
     }
   }
   
+ 
+ if (user && user.workspaces.length > 0) {
+  user?.workspaces.forEach(workspace => console.log(workspace));
+  //user.workspaceIds.map(workspaceId => <WorkspaceListRow />) WORK ON THIS
+ }
+
   return (
     <>
       <div>User: {user?.username}</div>

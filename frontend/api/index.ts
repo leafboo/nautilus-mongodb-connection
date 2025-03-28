@@ -17,6 +17,7 @@ const NautilusApi = {
       console.error(error);
     }
   },
+
   async createUser(username: string, email: string, password: string) {
     try {
       const response = await fetch('http://localhost:3000/users', {

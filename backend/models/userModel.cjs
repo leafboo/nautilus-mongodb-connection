@@ -14,10 +14,70 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true
     },
-    workspace_ids: [{
-      type: mongoose.Schema.Types.ObjectID,
-      required: false
-    }]
+    workspaces: {
+      type: [{
+        workspaceName: {
+          type: String,
+          required: true
+        },
+        notebook: [{
+          type: String,
+          required: true
+        }],
+    
+        researchPapers: {
+          type: [{
+            title: {
+              type: String
+            },
+            abstract: {
+              type: String
+            },
+            keywords: [{
+              type: String
+            }],
+            datePublished: {
+              type: Date,
+            },
+            authors: [{
+              type: String
+            }],
+            doi: {
+              type: String
+            },
+            linkToSource: {
+              type: String
+            }
+          }],
+          default: []
+          
+        },
+  
+        newsArticles: {
+          type: [{
+            title: {
+              type: String
+            },
+            summary: {
+              type: String
+            },
+            journalists: [{
+              type: String
+            }],
+            politicalBiasRating: {
+              type: String
+            },
+            linkToSource: {
+              type: String
+            }
+          }],
+          default: []
+        }
+      }],
+      required: false,
+      default: []
+      
+    }
     
   }
   

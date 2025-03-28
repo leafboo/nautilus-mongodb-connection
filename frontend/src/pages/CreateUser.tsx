@@ -1,4 +1,3 @@
-import React from "react";
 import { z } from "zod"
 import { useNavigate } from "react-router";
 import NautilusApi from "../../api";
@@ -37,16 +36,16 @@ export default function CreateUser() {
     <>
       <form action={formAction}>
         <label htmlFor="username">Username</label><br />
-        <input id="username" name="username" type="text" /><br />
+        <input id="username" name="username" type="text" required /><br />
 
         <label htmlFor="email">Email</label><br />
-        <input id="email" name="email" type="text" /><br />
+        <input id="email" name="email" type="text" required /><br />
 
         <label htmlFor="password">Password</label><br />
-        <input id="password" name="password" type="password" /><br />
+        <input id="password" name="password" type="password" required /><br />
 
         <label htmlFor="reEnterPassword">Re-Enter Password</label><br />
-        <input id="reEnterPassword" name="reEnterPassword" type="password" /><br /><br />
+        <input id="reEnterPassword" name="reEnterPassword" type="password" required /><br /><br />
 
        
         <input type="submit" value="Create Account" />

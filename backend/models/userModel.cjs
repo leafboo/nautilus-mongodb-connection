@@ -20,6 +20,10 @@ const userSchema = mongoose.Schema(
           type: String,
           required: true
         },
+        workspaceType: {
+          type: String,
+          required: true
+        },
         notebook: [{
           type: String,
           required: true

@@ -43,6 +43,16 @@ app.get('/users/:id', async(req, res) => {
     res.status(500).json({message: error.message})
   }
 });
+// GET individual workpsace of a user by user ID and workspace ID
+app.get('/users/:id/:workspaceId', async(req, res) => {
+  try {
+    const { id, workspaceId } = req.params; // req.params gets the value of /:id (it's an express.js thing)
+    const user = await User.findOne({ _id: id, 'workspaces._id': workspaceId }, {workspaces:true, _id:false});
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+});
 
 // POST
 app.post('/users', async(req, res) => {

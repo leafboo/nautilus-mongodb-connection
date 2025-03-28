@@ -3,19 +3,31 @@ import { Link, useParams } from "react-router"
 import UserHomeCSS from "./UserHome.module.css"
 import WorkspaceListRow from "../components/WorkspaceListRow"
 import NautilusApi from "../../api";
+type WorkspaceType = {
+  _id: string;
+  workspaceName: string;
+  workspaceType: string;
+  notebook: string[];
+  researchPapers: [];
+  newsArticles: [];
+}
 
 type UserType = {
   _id: string;
   username: string;
   password: string;
   email: string;
-  workspaces: [];
+  workspaces: WorkspaceType[];
   __v: number
 }
+
+
 
 export default function UserHome() {  
   const { id } = useParams();
   const [user, setUser] = React.useState<UserType>();
+  const [workspaces, setWorkspaces] = React.useState<WorkspaceType[]>();
+  let workspaceElement
 
   React.useEffect(() => {
     getUser();
@@ -28,10 +40,10 @@ export default function UserHome() {
     }
   }
   
- 
+ console.log(user)  
  if (user && user.workspaces.length > 0) {
   user?.workspaces.forEach(workspace => console.log(workspace));
-  //user.workspaceIds.map(workspaceId => <WorkspaceListRow />) WORK ON THIS
+  workspaceElement = user?.workspaces.map(workspace => <WorkspaceListRow name={workspace.workspaceName} type={workspace.workspaceType} />)
  }
 
   return (
@@ -49,15 +61,7 @@ export default function UserHome() {
         
 
           <div className={UserHomeCSS['workspace-list']}>
-            <WorkspaceListRow workspace={1}
-                              type="Research Paper" />
-            <WorkspaceListRow workspace={2}
-                              type="News Article" />
-            <WorkspaceListRow workspace={3}
-                              type="Research Paper" />
-            <WorkspaceListRow workspace={4}
-                              type="Research Paper" />
-          
+            {workspaceElement}
           </div>
         </div>
       </div>

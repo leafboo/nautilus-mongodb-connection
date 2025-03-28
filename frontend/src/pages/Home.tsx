@@ -17,8 +17,6 @@ export default function Home() {
   const [users, setUsers] = React.useState<UserType[]>([]);
   let usersElement
   if (users) {
-    users.forEach((user) => console.log(user.username))
-
     usersElement = users.map(user => <UserListRow id={user._id} user={user.username} />) 
 
   }

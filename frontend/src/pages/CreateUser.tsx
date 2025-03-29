@@ -29,7 +29,6 @@ export default function CreateUser() {
     }
 
 
-    console.log(result)
   }
 
   return ( 

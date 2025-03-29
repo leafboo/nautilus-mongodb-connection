@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema(
         },
         notebook: [{
           type: String,
-          required: true
+          required: false
         }],
     
         researchPapers: {

@@ -35,6 +35,23 @@ const NautilusApi = {
     } catch (error) {
       console.error(error)
     }
+  },
+
+  async createUserWorkspace(userId: string, workspaceName: string, workspaceType: string) {
+    try {
+      const response = await fetch(`http://localhost:3000/users/${userId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          workspaceName: workspaceName,
+          workspaceType: workspaceType
+        })
+      });
+      const data = await response.json();
+      console.log(data)
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 

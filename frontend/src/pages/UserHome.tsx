@@ -26,7 +26,6 @@ type UserType = {
 export default function UserHome() {  
   const { id } = useParams();
   const [user, setUser] = React.useState<UserType>();
-  const [workspaces, setWorkspaces] = React.useState<WorkspaceType[]>();
   let workspaceElement
 
   React.useEffect(() => {
@@ -40,9 +39,7 @@ export default function UserHome() {
     }
   }
   
- console.log(user)  
  if (user && user.workspaces.length > 0) {
-  user?.workspaces.forEach(workspace => console.log(workspace));
   workspaceElement = user?.workspaces.map(workspace => <WorkspaceListRow name={workspace.workspaceName} type={workspace.workspaceType} />)
  }
 
@@ -52,7 +49,7 @@ export default function UserHome() {
       <div className={UserHomeCSS['user-home-container']}>
         <div className={UserHomeCSS['user-home-box']}>
           <div className={UserHomeCSS['create-workspace-button']}>
-            <Link to="/userHome/createWorkspace" >
+            <Link to={`/userHome/${user?._id}/createWorkspace`} >
               <button>
                 Create Workspace
               </button>

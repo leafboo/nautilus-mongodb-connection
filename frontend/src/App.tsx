@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/createUser" element={<CreateUser />} />
         <Route path="/userHome/:id" element={<UserHome />} />
-        <Route path="/userHome/createWorkspace" element={<CreateWorkspace />} />
+        <Route path="/userHome/:id/createWorkspace" element={<CreateWorkspace />} />
         <Route path="/userHome/workspace" element={<Workspace />} />
       
 

@@ -67,7 +67,19 @@ app.post('/users', async(req, res) => {
 
 
 // UPDATE
-
+app.put('/users/:id', async(req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(id, { $push: { workspaces: req.body } }); // appends a new object in the workspaces array
+    // cannot find users with the id
+    if (!user) {
+      res.status(404).json({message: `cannot find user with ID ${id}`});
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }
+})
 
 mongoose
 .connect('mongodb+srv://leafboo:passwordParaCapstone@nautilusdb.dwoon.mongodb.net/?retryWrites=true&w=majority&appName=NautilusDB', {dbName: 'NautilusTestDB'})

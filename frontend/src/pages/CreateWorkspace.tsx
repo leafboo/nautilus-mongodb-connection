@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router"
+import { useParams, useNavigate } from "react-router"
 import CreateWorkspaceCSS from "./CreateWorkspace.module.css"
 import { z } from "zod"
 import NautilusApi from "../../api"

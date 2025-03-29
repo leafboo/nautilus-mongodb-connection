@@ -1,7 +1,7 @@
 const NautilusApi = {
   async fetchUsers() {
     try {
-      const response = await fetch('http://localhost:3000/users')
+      const response = await fetch('https://nautilus-mongodb-connection.vercel.app/users')
       const data = await response.json();
       return data;
     } catch (error) {
@@ -10,7 +10,7 @@ const NautilusApi = {
   }, 
   async fetchUser(userId: string) {
     try {
-      const response = await fetch(`http://localhost:3000/users/${userId}`);
+      const response = await fetch(`https://nautilus-mongodb-connection.vercel.app/users/${userId}`);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -20,7 +20,7 @@ const NautilusApi = {
 
   async createUser(username: string, email: string, password: string) {
     try {
-      const response = await fetch('http://localhost:3000/users', {
+      const response = await fetch('https://nautilus-mongodb-connection.vercel.app/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -39,7 +39,7 @@ const NautilusApi = {
 
   async createUserWorkspace(userId: string, workspaceName: string, workspaceType: string) {
     try {
-      const response = await fetch(`http://localhost:3000/users/${userId}`, {
+      const response = await fetch(`https://nautilus-mongodb-connection.vercel.app/users/${userId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

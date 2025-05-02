@@ -6,7 +6,6 @@ import NautilusApi from "../../api";
 type WorkspaceType = {
   _id: string;
   workspaceName: string;
-  workspaceType: string;
   notebook: string[];
   researchPapers: [];
   newsArticles: [];
@@ -40,7 +39,7 @@ export default function UserHome() {
   }
   
  if (user && user.workspaces.length > 0) {
-  workspaceElement = user?.workspaces.map(workspace => <WorkspaceListRow name={workspace.workspaceName} type={workspace.workspaceType} />)
+  workspaceElement = user?.workspaces.map(workspace => <WorkspaceListRow name={workspace.workspaceName} />)
  }
 
   return (

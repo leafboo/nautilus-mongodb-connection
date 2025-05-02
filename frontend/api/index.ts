@@ -37,14 +37,13 @@ const NautilusApi = {
     }
   },
 
-  async createUserWorkspace(userId: string, workspaceName: string, workspaceType: string) {
+  async createUserWorkspace(userId: string, workspaceName: string) {
     try {
       const response = await fetch(`https://nautilus-mongodb-connection.vercel.app/users/${userId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          workspaceName: workspaceName,
-          workspaceType: workspaceType
+          workspaceName: workspaceName
         })
       });
       const data = await response.json();

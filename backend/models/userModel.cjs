@@ -20,11 +20,7 @@ const userSchema = mongoose.Schema(
           type: String,
           required: true
         },
-        workspaceType: {
-          type: String,
-          required: true
-        },
-        notebook: [{
+        notes: [{
           type: String,
           required: false
         }],
@@ -59,7 +55,7 @@ const userSchema = mongoose.Schema(
   
         newsArticles: {
           type: [{
-            title: {
+            headline: {
               type: String
             },
             summary: {

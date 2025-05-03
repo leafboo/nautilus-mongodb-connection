@@ -14,6 +14,7 @@ export default function ResearchPaperListRow(props: ResearchPaperListRowProps) {
   return (
     <>
       <div className={ResearchPaperListRowCSS['research-paper-list-row-container']}>
+        <div>Type: Research Paper</div>
         <div>Title: {props.title}</div>
         <div>Abstract: {props.abstract}</div>
         <div>Authors: {props.authors}</div>

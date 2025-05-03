@@ -1,15 +1,15 @@
 import ResearchPaperListRow from "../components/ResearchPaperListRow"
 import NewsArticleListRow from "../components/NewsArticleListRow"
-import NotebookListRow from "../components/NotebookListRow"
+import NoteRow from "../components/NoteRow"
 import WorkspaceCSS from "./Workspace.module.css"
 import { useLocation } from "react-router"
 
 export default function Workspace() {
   const location = useLocation()
-  const { name, type } = location.state
+  const { name } = location.state
  
 
-  const ReseachPaperList = 
+  const ResearchPaperList = 
   <>
     <ResearchPaperListRow title= "A Study on Artificial Intelligence"
                           abstract= "This research explores the impact of AI on modern society..."
@@ -57,27 +57,27 @@ export default function Workspace() {
   return (
     <>
       <div>Workspace {name}</div>
-      <div>Type: {type}</div>
       <div className={WorkspaceCSS['workspace-container']}>
         <div className={WorkspaceCSS['workspace-box']}>
           <div className={WorkspaceCSS['notebook-box']}>
-            <div>Notebook</div>
-            <button>Create new Notebook</button>
+            <div>Notes</div>
+            <button>Create new Note</button>
             <div className={WorkspaceCSS['notebook-list']}>
-              <NotebookListRow notebook="Summary.txt" />
-              <NotebookListRow notebook="Notes.txt" />
-              <NotebookListRow notebook="FinalPaper.txt" />
+              <NoteRow note="Summary.txt" />
+              <NoteRow note="Notes.txt" />
+              <NoteRow note="FinalPaper.txt" />
 
             </div>
           </div>
           <div className={WorkspaceCSS['research-paper-box']}>
-            <div>{type === "Research Paper" ? "Research Papers" : "News Articles"}</div>
            
-            <button>Find new Research Paper</button>
+            <button>Search for Research Paper</button> <br />
+            <button>Search for News Article</button>
           
             
             <div className={WorkspaceCSS['research-paper-list']}>
-              {type === "Research Paper" ? ReseachPaperList : NewsArticleList}
+              {ResearchPaperList}
+              {NewsArticleList}
             </div>
           </div>
 

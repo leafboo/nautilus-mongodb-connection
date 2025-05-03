@@ -14,6 +14,7 @@ export default function NewsArticleListRow(props: NewsArticleListRowProps) {
   return (
     <>
       <div className={NewsArticleListRowCSS['news-article-list-row-container']}>
+        <div>Type: News Article</div>
         <div>Title: {props.title}</div>
         <div>Summary: {props.summary}</div>
         <div>Authors: {props.authors}</div>

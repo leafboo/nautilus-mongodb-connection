@@ -20,10 +20,12 @@ const userSchema = mongoose.Schema(
           type: String,
           required: true
         },
-        notes: [{
-          type: String,
-          required: false
-        }],
+        notes: {
+          type: [{
+            noteName: String
+          }]
+        },
+         
     
         researchPapers: {
           type: [{

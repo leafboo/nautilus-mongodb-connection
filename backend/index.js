@@ -81,6 +81,24 @@ app.put('/users/:id', async(req, res) => {
   }
 })
 
+app.put('/users/:id/:workspaceId', async(req, res) => {
+  try {
+    const { id, workspaceId } = req.params;
+    // _id.workspaces._workspaceId.notes
+    const user = await User.findOneAndUpdate(
+      { _id: id }, // update only the user with the specified id
+      { $push: { 'workspaces.$[wId].notes': req.body } }, // update the notes of the workspace with the specified id
+      { arrayFilters: [
+        {"wId._id": workspaceId}], 
+        new: true
+      })
+
+      res.status(200).json(user)
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+})
+
 mongoose
 .connect('mongodb+srv://leafboo:passwordParaCapstone@nautilusdb.dwoon.mongodb.net/?retryWrites=true&w=majority&appName=NautilusDB', {dbName: 'NautilusTestDB'})
 .then(() => {

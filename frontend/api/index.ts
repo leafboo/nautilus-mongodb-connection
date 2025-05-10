@@ -51,6 +51,22 @@ const NautilusApi = {
     } catch (error) {
       console.error(error);
     }
+  },
+
+  async createWorkspaceNote(userId: string, workspaceId: string, noteName: string) {
+    try {
+      const response = await fetch(`https://nautilus-mongodb-connection.vercel.app/users/${userId}/${workspaceId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          noteName: noteName
+        })
+      });
+      const data = await response.json();
+      console.log(data)
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 

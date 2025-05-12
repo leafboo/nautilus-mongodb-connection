@@ -3,6 +3,7 @@ import CreateUser from "./pages/CreateUser"
 import UserHome from "./pages/UserHome"
 import Workspace from "./pages/Workspace"
 import CreateWorkspace from "./pages/CreateWorkspace"
+import CreateNote from "./pages/CreateNote"
 import { Routes, Route } from "react-router"
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/userHome/:id" element={<UserHome />} />
         <Route path="/userHome/:id/createWorkspace" element={<CreateWorkspace />} />
         <Route path="/userHome/workspace" element={<Workspace />} />
+        <Route path="/userHome/:id/:workspaceId/createNote" element={<CreateNote />} />
       
 
 
